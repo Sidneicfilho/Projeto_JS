@@ -1,0 +1,99 @@
+//etapa4
+// Função para armazenar os dados da Etapa 4 na sessionStorage
+function saveEtapa4Data() {
+ // Campos adicionais para armazenamento na sessionStorage para a Etapa 4
+ const fields = [
+     'Flexível_E', 'Rígido_D', 'Rígido_E', 'Espalmado_D', 'Espalmado_E', 
+     'Martelo_D', 'Martelo_E', 'Queda_Metatarso_D', 'Queda_Metatarso_E', 
+     'Tipo_Marcha', 'Marcha_Descricao', 'Joelho', 'Articulacao', 'Sensibilidade_Dor'
+ ];
+
+ // Itera sobre os campos e armazena o valor correspondente na sessionStorage
+ fields.forEach(field => {
+     const element = document.querySelector(`input[name="${field}"]:checked`);
+     if (element) {
+         sessionStorage.setItem(field, element.value); // Para booleanos ou ENUM
+     } else {
+         // Para o campo de descrição (textos ou casos de não seleção)
+         const textElement = document.querySelector(`input[name="${field}"]`);
+         if (textElement) {
+             sessionStorage.setItem(field, textElement.value); // Caso tenha um campo de texto como descrição
+         }
+     }
+ });
+
+ // Armazenando o id_cliente
+ const idCliente = document.querySelector('input[name="id_cliente"]').value;
+ sessionStorage.setItem('id_cliente', idCliente);
+}
+
+// Função de submissão para a Etapa 4
+function submitEtapa4Data() {
+ // Criação do objeto com os dados a serem enviados para a Etapa 4
+ const etapa4Data = {
+     Flexível_E: sessionStorage.getItem('Flexível_E'),
+     Rígido_D: sessionStorage.getItem('Rígido_D'),
+     Rígido_E: sessionStorage.getItem('Rígido_E'),
+     Espalmado_D: sessionStorage.getItem('Espalmado_D'),
+     Espalmado_E: sessionStorage.getItem('Espalmado_E'),
+     Martelo_D: sessionStorage.getItem('Martelo_D'),
+     Martelo_E: sessionStorage.getItem('Martelo_E'),
+     Queda_Metatarso_D: sessionStorage.getItem('Queda_Metatarso_D'),
+     Queda_Metatarso_E: sessionStorage.getItem('Queda_Metatarso_E'),
+     Tipo_Marcha: sessionStorage.getItem('Tipo_Marcha'),
+     Marcha_Descricao: sessionStorage.getItem('Marcha_Descricao'),
+     Joelho: sessionStorage.getItem('Joelho'),
+     Articulacao: sessionStorage.getItem('Articulacao'),
+     Sensibilidade_Dor: sessionStorage.getItem('Sensibilidade_Dor'),
+     id_cliente: sessionStorage.getItem('id_cliente') // Certifique-se de que o id_cliente está corretamente salvo
+ };
+
+ // Log para depuração
+ console.log('Submitting Etapa4 Data:', etapa4Data);
+
+ // Envia os dados para o Sequelize (ajuste conforme necessário)
+ Etapa4.create(etapa4Data)
+     .then(result => {
+         console.log('Data inserted successfully:', result);
+
+         // Limpa o sessionStorage após a submissão bem-sucedida
+         Object.keys(etapa4Data).forEach(key => {
+             if (key !== 'id_cliente') {
+                 sessionStorage.removeItem(key);
+             }
+         });
+
+         // Redireciona ou exibe mensagem de sucesso
+         window.location.href = '/next-step'; // Ajuste conforme necessário
+     })
+     .catch(error => {
+         console.error('Error inserting data:', error);
+         if (error.errors) {
+             error.errors.forEach(err => {
+                 console.error(`${err.path}: ${err.message}`);
+             });
+         }
+         alert('Erro ao salvar dados. Por favor, verifique as informações e tente novamente.');
+ 
+
+
+
+
+         // Exibir dados resumidos na etapa 3
+function showResumo() {
+    const nome = sessionStorage.getItem('nome') || "Não informado";
+    const email = sessionStorage.getItem('email') || "Não informado";
+    const endereco = sessionStorage.getItem('endereco') || "Não informado";
+    const cidade = sessionStorage.getItem('cidade') || "Não informado";
+
+    const resumo = `
+        <p><strong>Nome:</strong> ${nome}</p>
+        <p><strong>E-mail:</strong> ${email}</p>
+        <p><strong>Endereço:</strong> ${endereco}</p>
+        <p><strong>Cidade:</strong> ${cidade}</p>
+    `;
+    const resumoDiv = document.getElementById('resumo');
+    if (resumoDiv) {
+        resumoDiv.innerHTML = resumo;
+    }
+}
