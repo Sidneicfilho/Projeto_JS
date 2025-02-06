@@ -115,3 +115,42 @@ function nextStep() {
         window.location.href = nextPage;
     }
 }
+
+function showResumo1() {
+    const idCliente = sessionStorage.getItem('id_cliente') || "Não informado";
+    const nome = sessionStorage.getItem('nome') || "Não informado";
+    const email = sessionStorage.getItem('email') || "Não informado";
+    const endereco = sessionStorage.getItem('endereco') || "Não informado";
+    const bairro = sessionStorage.getItem('bairro') || "Não informado";
+    const cidade = sessionStorage.getItem('cidade') || "Não informado";
+    const estado = sessionStorage.getItem('estado') || "Não informado";
+    const cep = sessionStorage.getItem('cep') || "Não informado";
+    const telRes = sessionStorage.getItem('tel_res') || "Não informado";
+    const telefone = sessionStorage.getItem('telefone') || "Não informado";
+    const telEmergencia = sessionStorage.getItem('tel_emergencia') || "Não informado";
+    const contato = sessionStorage.getItem('contato') || "Não informado";
+    const dataNascimento = sessionStorage.getItem('data_nascimento') || "Não informado";
+    const profissao = sessionStorage.getItem('profissao') || "Não informado";
+
+    const resumo1 = `
+        <p><strong>ID Cliente:</strong> ${idCliente}</p>
+        <p><strong>Nome:</strong> ${nome}</p>
+        <p><strong>E-mail:</strong> ${email}</p>
+        <p><strong>Endereço:</strong> ${endereco}</p>
+        <p><strong>Bairro:</strong> ${bairro}</p>
+        <p><strong>Cidade:</strong> ${cidade}</p>
+        <p><strong>Estado:</strong> ${estado}</p>
+        <p><strong>CEP:</strong> ${cep}</p>
+        <p><strong>Telefone Residencial:</strong> ${telRes}</p>
+        <p><strong>Telefone:</strong> ${telefone}</p>
+        <p><strong>Telefone de Emergência:</strong> ${telEmergencia}</p>
+        <p><strong>Contato:</strong> ${contato}</p>
+        <p><strong>Data de Nascimento:</strong> ${dataNascimento}</p>
+        <p><strong>Profissão:</strong> ${profissao}</p>
+    `;
+
+    const resumoDiv = document.getElementById('resumo1');
+    if (resumoDiv) {
+        resumoDiv.innerHTML = resumo1;
+    }
+}

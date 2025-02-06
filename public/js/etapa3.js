@@ -127,3 +127,57 @@ function nextStep() {
         window.location.href = nextPage;
     }
 }
+
+
+function showResumo() {
+    const osteoporose = sessionStorage.getItem('osteoporose') || "Não informado";
+    const renal = sessionStorage.getItem('renal') || "Não informado";
+    const epilepsia = sessionStorage.getItem('epilepsia') || "Não informado";
+    const quimioterapiaRadioterapia = sessionStorage.getItem('quimioterapiaRadioterapia') || "Não informado";
+    const hipotireoidismo = sessionStorage.getItem('hipotireoidismo') || "Não informado";
+    const hepatite = sessionStorage.getItem('hepatite') || "Não informado";
+    const antecedenteOncologico = sessionStorage.getItem('antecedenteOncologico') || "Não informado";
+    const cardiopatia = sessionStorage.getItem('cardiopatia') || "Não informado";
+    const hipertensao = sessionStorage.getItem('hipertensao') || "Não informado";
+    const reumatismo = sessionStorage.getItem('reumatismo') || "Não informado";
+    const hanseniase = sessionStorage.getItem('hanseniase') || "Não informado";
+    const cirurgiaMMII = sessionStorage.getItem('cirurgiaMMII') || "Não informado";
+    const marcaPasso = sessionStorage.getItem('marcaPasso') || "Não informado";
+    const hipotensao = sessionStorage.getItem('hipotensao') || "Não informado";
+    const insulina = sessionStorage.getItem('insulina') || "Não informado";
+    const dietaHidrica = sessionStorage.getItem('dietaHidrica') || "Não informado";
+    const injetavel = sessionStorage.getItem('injetavel') || "Não informado";
+    const dietaAlimentar = sessionStorage.getItem('dietaAlimentar') || "Não informado";
+    const viaOral = sessionStorage.getItem('viaOral') || "Não informado";
+    const taxaGlicemica = sessionStorage.getItem('taxaGlicemica') || "Não informado";
+    const alteracoesVasculares = sessionStorage.getItem('alteracoesVasculares') || "Não informado";
+
+    const resumo3 = `
+        <p><strong>Osteoporose:</strong> ${osteoporose}</p>
+        <p><strong>Renal:</strong> ${renal}</p>
+        <p><strong>Epilepsia:</strong> ${epilepsia}</p>
+        <p><strong>Quimioterapia/Radioterapia:</strong> ${quimioterapiaRadioterapia}</p>
+        <p><strong>Hipotireoidismo:</strong> ${hipotireoidismo}</p>
+        <p><strong>Hepatite:</strong> ${hepatite}</p>
+        <p><strong>Antecedente Oncológico:</strong> ${antecedenteOncologico}</p>
+        <p><strong>Cardiopatia:</strong> ${cardiopatia}</p>
+        <p><strong>Hipertensão:</strong> ${hipertensao}</p>
+        <p><strong>Reumatismo:</strong> ${reumatismo}</p>
+        <p><strong>Hanseniase:</strong> ${hanseniase}</p>
+        <p><strong>Cirurgia MMII:</strong> ${cirurgiaMMII}</p>
+        <p><strong>Marca-passo:</strong> ${marcaPasso}</p>
+        <p><strong>Hipotensão:</strong> ${hipotensao}</p>
+        <p><strong>Insulina:</strong> ${insulina}</p>
+        <p><strong>Dieta Hídrica:</strong> ${dietaHidrica}</p>
+        <p><strong>Injetável:</strong> ${injetavel}</p>
+        <p><strong>Dieta Alimentar:</strong> ${dietaAlimentar}</p>
+        <p><strong>Via Oral:</strong> ${viaOral}</p>
+        <p><strong>Taxa Glicêmica:</strong> ${taxaGlicemica}</p>
+        <p><strong>Alterações Vasculares:</strong> ${alteracoesVasculares}</p>
+    `;
+
+    const resumoDiv = document.getElementById('resumo3');
+    if (resumoDiv) {
+        resumoDiv.innerHTML = resumo3;
+    }
+}

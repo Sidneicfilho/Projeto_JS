@@ -211,7 +211,63 @@ function previousStep() {
     }
 }
 
-//Essa função já é chamada no final do script.js, na verificação:
-if (window.location.pathname.includes('etapa7')) {
-    showResumo();
+function showResumo() {
+    const idCliente = sessionStorage.getItem('id_cliente') || "Não informado";
+    const queixaPrincipal = sessionStorage.getItem('queixa_principal') || "Não informado";
+    const frequentaPodologo = sessionStorage.getItem('frequenta_podologo') || "Não informado";
+    const frequenciaVisitaPodologo = sessionStorage.getItem('frequencia_visita_podologo') || "Não informado";
+    const usoMedicamento = sessionStorage.getItem('uso_medicamento') || "Não informado";
+    const tipoMedicamento = sessionStorage.getItem('tipo_medicamento') || "Não informado";
+    const alergico = sessionStorage.getItem('alergico') || "Não informado";
+    const alergiaSubstancia = sessionStorage.getItem('alergia_substancia') || "Não informado";
+    const posicaoTrabalho = sessionStorage.getItem('posicao_trabalho') || "Não informado";
+    const duracaoTrabalho = sessionStorage.getItem('duracao_trabalho') || "Não informado";
+    const tempoEmPe = sessionStorage.getItem('tempo_em_pe') || "Não informado";
+    const tempoSentado = sessionStorage.getItem('tempo_sentado') || "Não informado";
+    const tempoCaminhando = sessionStorage.getItem('tempo_caminhando') || "Não informado";
+    const numeroCalcado = sessionStorage.getItem('numero_calcado') || "Não informado";
+    const tipoCalcadoDiario = sessionStorage.getItem('tipo_calcado_diario') || "Não informado";
+    const tipoCalcadoQual = sessionStorage.getItem('tipo_calcado_qual') || "Não informado";
+    const fumante = sessionStorage.getItem('fumante') || "Não informado";
+    const menstruacao = sessionStorage.getItem('menstruacao') || "Não informado";
+    const gestante = sessionStorage.getItem('gestante') || "Não informado";
+    const amamentando = sessionStorage.getItem('amamentando') || "Não informado";
+    const dum = sessionStorage.getItem('dum') || "Não informado";
+    const praticaAtividadeFisica = sessionStorage.getItem('praticaAtividadeFisica') || "Não informado";
+    const frequenciaAtividadeFisica = sessionStorage.getItem('frequenciaAtividadeFisica') || "Não informado";
+    const esporteAtividade = sessionStorage.getItem('esporteAtividade') || "Não informado";
+    const tipoCalcadoEsporte = sessionStorage.getItem('tipoCalcadoEsporte') || "Não informado";
+
+    const resumo2 = `
+        <p><strong>ID Cliente:</strong> ${idCliente}</p>
+        <p><strong>Queixa Principal:</strong> ${queixaPrincipal}</p>
+        <p><strong>Frequenta Podólogo:</strong> ${frequentaPodologo}</p>
+        <p><strong>Frequência de Visita ao Podólogo:</strong> ${frequenciaVisitaPodologo}</p>
+        <p><strong>Uso de Medicamento:</strong> ${usoMedicamento}</p>
+        <p><strong>Tipo de Medicamento:</strong> ${tipoMedicamento}</p>
+        <p><strong>Alérgico:</strong> ${alergico}</p>
+        <p><strong>Substância Alérgica:</strong> ${alergiaSubstancia}</p>
+        <p><strong>Posição no Trabalho:</strong> ${posicaoTrabalho}</p>
+        <p><strong>Duração do Trabalho:</strong> ${duracaoTrabalho}</p>
+        <p><strong>Tempo em Pé:</strong> ${tempoEmPe}</p>
+        <p><strong>Tempo Sentado:</strong> ${tempoSentado}</p>
+        <p><strong>Tempo Caminhando:</strong> ${tempoCaminhando}</p>
+        <p><strong>Número do Calçado:</strong> ${numeroCalcado}</p>
+        <p><strong>Tipo de Calçado Diário:</strong> ${tipoCalcadoDiario}</p>
+        <p><strong>Tipo de Calçado:</strong> ${tipoCalcadoQual}</p>
+        <p><strong>Fumante:</strong> ${fumante}</p>
+        <p><strong>Menstruação:</strong> ${menstruacao}</p>
+        <p><strong>Gestante:</strong> ${gestante}</p>
+        <p><strong>Amamentando:</strong> ${amamentando}</p>
+        <p><strong>DUM:</strong> ${dum}</p>
+        <p><strong>Pratica Atividade Física:</strong> ${praticaAtividadeFisica}</p>
+        <p><strong>Frequência de Atividade Física:</strong> ${frequenciaAtividadeFisica}</p>
+        <p><strong>Esporte/Atividade:</strong> ${esporteAtividade}</p>
+        <p><strong>Tipo de Calçado para Esporte:</strong> ${tipoCalcadoEsporte}</p>
+    `;
+
+    const resumoDiv = document.getElementById('resumo2');
+    if (resumoDiv) {
+        resumoDiv.innerHTML = resumo2;
+    }
 }

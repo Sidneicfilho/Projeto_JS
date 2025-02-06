@@ -76,5 +76,60 @@ function saveData() {
         console.error('Erro:', error); // Exibe o erro no console
     });
 }
+
+function showResumo() {
+    // Recupera os valores dos inputs de rádio (teve_erisipela)
+    const teveErisipela = sessionStorage.getItem('teve_erisipela') || "Não informado";
+
+    // Recupera os valores das checkboxes (condições dermatológicas)
+    const bromidrose = sessionStorage.getItem('bromidrose') || "Não informado";
+    const hidrose = sessionStorage.getItem('hidrose') || "Não informado";
+    const desidrose = sessionStorage.getItem('desidrose') || "Não informado";
+    const isquemia = sessionStorage.getItem('isquemia') || "Não informado";
+    const malPerfurante = sessionStorage.getItem('mal_perfurante') || "Não informado";
+    const edema = sessionStorage.getItem('edema') || "Não informado";
+    const tinea = sessionStorage.getItem('tinea') || "Não informado";
+    const psoriase = sessionStorage.getItem('psoriase') || "Não informado";
+    const tungiase = sessionStorage.getItem('tungiase') || "Não informado";
+    const verrugaPlantar = sessionStorage.getItem('verruga_plantar') || "Não informado";
+    const caloDorsal = sessionStorage.getItem('calo_dorsal') || "Não informado";
+    const querotose = sessionStorage.getItem('querotose') || "Não informado";
+    const caloPlantar = sessionStorage.getItem('calo_plantar') || "Não informado";
+    const hiperqueratose = sessionStorage.getItem('hiperqueratose') || "Não informado";
+    const caloInterdigital = sessionStorage.getItem('calo_interdigital') || "Não informado";
+    const outrasAlteracoes = sessionStorage.getItem('outras_alteracoes') || "Não informado";
+    const comentarios = sessionStorage.getItem('comentarios') || "Não informado";
+
+    const resumo6 = `
+        <h3>Condições Dermatológicas</h3>
+        <p><strong>Teve Erisipela:</strong> ${teveErisipela}</p>
+        <p><strong>Bromidrose:</strong> ${bromidrose}</p>
+        <p><strong>Hidrose:</strong> ${hidrose}</p>
+        <p><strong>Desidrose:</strong> ${desidrose}</p>
+        <p><strong>Isquemia:</strong> ${isquemia}</p>
+        <p><strong>Mal Perfurante:</strong> ${malPerfurante}</p>
+        <p><strong>Edema:</strong> ${edema}</p>
+        <p><strong>Tinea:</strong> ${tinea}</p>
+        <p><strong>Psoríase:</strong> ${psoriase}</p>
+        <p><strong>Tungiase:</strong> ${tungiase}</p>
+        <p><strong>Verruga Plantar:</strong> ${verrugaPlantar}</p>
+        <p><strong>Calo Dorsal:</strong> ${caloDorsal}</p>
+        <p><strong>Queratose:</strong> ${querotose}</p>
+        <p><strong>Calo Plantar:</strong> ${caloPlantar}</p>
+        <p><strong>Hiperqueratose:</strong> ${hiperqueratose}</p>
+        <p><strong>Calo Interdigital:</strong> ${caloInterdigital}</p>
+
+        <h3>Outras Alterações</h3>
+        <p><strong>Outras Alterações:</strong> ${outrasAlteracoes}</p>
+
+        <h3>Comentários</h3>
+        <p><strong>Comentários:</strong> ${comentarios}</p>
+    `;
+
+    const resumoDiv = document.getElementById('resumo6');
+    if (resumoDiv) {
+        resumoDiv.innerHTML = resumo6;
+    }
+}
  
  

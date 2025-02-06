@@ -2,7 +2,7 @@ function SaveData() {
     const inputs = [
         { name: 'Tipo_Pisada', key: 'Tipo_pisada' },
         { name: 'Tipo_Marcha', key: 'Tipo_Marcha' },
-        { name: 'Tipo_Joelho', key: 'Tipo_Joelho' },
+        { name: 'Joelho', key: 'Joelho' },
         { name: 'Articulacao', key: 'Articulacao' },
         { name: 'Sensibilidade_Dor', key: 'Sensibilidade_Dor' },
         { name: 'Flexivel_E', key: 'Flexivel_E' },
@@ -75,5 +75,44 @@ function nextStep() {
  
     if (nextPage) {
         window.location.href = nextPage;
+    }
+}
+
+function showResumo() {
+    const flexivelE = sessionStorage.getItem('Flexível_E') || "Não informado";
+    const rigidoD = sessionStorage.getItem('Rígido_D') || "Não informado";
+    const rigidoE = sessionStorage.getItem('Rígido_E') || "Não informado";
+    const espalmadoD = sessionStorage.getItem('Espalmado_D') || "Não informado";
+    const espalmadoE = sessionStorage.getItem('Espalmado_E') || "Não informado";
+    const marteloD = sessionStorage.getItem('Martelo_D') || "Não informado";
+    const marteloE = sessionStorage.getItem('Martelo_E') || "Não informado";
+    const quedaMetatarsoD = sessionStorage.getItem('Queda_Metatarso_D') || "Não informado";
+    const quedaMetatarsoE = sessionStorage.getItem('Queda_Metatarso_E') || "Não informado";
+    const tipoMarcha = sessionStorage.getItem('Tipo_Marcha') || "Não informado";
+    const marchaDescricao = sessionStorage.getItem('Marcha_Descricao') || "Não informado";
+    const joelho = sessionStorage.getItem('Joelho') || "Não informado";
+    const articulacao = sessionStorage.getItem('Articulacao') || "Não informado";
+    const sensibilidadeDor = sessionStorage.getItem('Sensibilidade_Dor') || "Não informado";
+
+    const resumo4 = `
+        <p><strong>Flexível (Esquerdo):</strong> ${flexivelE}</p>
+        <p><strong>Rígido (Direito):</strong> ${rigidoD}</p>
+        <p><strong>Rígido (Esquerdo):</strong> ${rigidoE}</p>
+        <p><strong>Espalmado (Direito):</strong> ${espalmadoD}</p>
+        <p><strong>Espalmado (Esquerdo):</strong> ${espalmadoE}</p>
+        <p><strong>Martelo (Direito):</strong> ${marteloD}</p>
+        <p><strong>Martelo (Esquerdo):</strong> ${marteloE}</p>
+        <p><strong>Queda do Metatarso (Direito):</strong> ${quedaMetatarsoD}</p>
+        <p><strong>Queda do Metatarso (Esquerdo):</strong> ${quedaMetatarsoE}</p>
+        <p><strong>Tipo de Marcha:</strong> ${tipoMarcha}</p>
+        <p><strong>Descrição da Marcha:</strong> ${marchaDescricao}</p>
+        <p><strong>Joelho:</strong> ${joelho}</p>
+        <p><strong>Articulação:</strong> ${articulacao}</p>
+        <p><strong>Sensibilidade/Dor:</strong> ${sensibilidadeDor}</p>
+    `;
+
+    const resumoDiv = document.getElementById('resumo4');
+    if (resumoDiv) {
+        resumoDiv.innerHTML = resumo4;
     }
 }

@@ -432,7 +432,7 @@ export const etapa6Post = (req: Request, res: Response) => {
 
 
 export const etapa7 = (req: Request, res: Response) => {
-    res.render('etapa7', { resumo: formData });
+    res.render('etapa7', { resumo: formData, formData2, formData3, formData4, formData5, formData6 });
 };
 
 
