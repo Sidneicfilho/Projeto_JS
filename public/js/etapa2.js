@@ -1,6 +1,9 @@
 function saveData(){
          //saveData da ETAPA2
-         if (document.getElementById('queixa_principal')) {
+    if (document.getElementById('id_cliente')) {
+            sessionStorage.setItem('id_cliente', document.getElementById('id_cliente').value);
+    }
+    if (document.getElementById('queixa_principal')) {
             sessionStorage.setItem('queixa_principal', document.getElementById('queixa_principal').value);
     }
         
@@ -99,6 +102,7 @@ function saveData(){
 // Enviar os dados da ETAPA2 para o backend
 function submitForm() {
     // Coleta os dados do sessionStorage
+    const id_cliente = sessionStorage.getItem('id_cliente'); 
     const queixa_principal = sessionStorage.getItem('queixa_principal');
     const frequenta_podologo = sessionStorage.getItem('frequenta_podologo');
     const frequencia_visita_podologo = sessionStorage.getItem('frequencia_visita_podologo');
@@ -131,6 +135,7 @@ function submitForm() {
             'Content-Type': 'application/json',
         },
         body: JSON.stringify({
+            id_cliente : id_cliente,
             queixa_principal,
             frequenta_podologo,
             frequencia_visita_podologo,

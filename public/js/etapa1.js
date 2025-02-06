@@ -70,6 +70,7 @@ document.getElementById('meuFormulario').addEventListener('submit', function(eve
             'Content-Type': 'application/json',
         },
         body: JSON.stringify({
+            id_cliente,
             nome,
             email,
             endereco,
@@ -87,8 +88,8 @@ document.getElementById('meuFormulario').addEventListener('submit', function(eve
     })
     .then(response => response.json())
     .then(data => {
-        alert('Formulário enviado com sucesso!');
-        console.log(data);
+        sessionStorage.setItem('id_cliente', data.id_cliente); // Armazena o id_cliente
+        alert('Dados da Etapa1 salvos com sucesso!');
     })
     .catch(error => {
         alert('Erro ao enviar os dados!');

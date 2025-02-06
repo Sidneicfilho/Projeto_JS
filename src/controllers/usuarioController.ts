@@ -9,6 +9,7 @@ import { Etapa6 } from '../models/etapa6';
 
 
 let formData: {
+    id_cliente?: number;
     nome?: string;
     endereco?: string; 
     bairro?: string; 
@@ -26,6 +27,7 @@ let formData: {
  } = {};
 
 let formData2: {
+    id_cliente?: number
     queixa_principal?: string;
     frequenta_podologo?: 'Sim' | 'Não';
     frequencia_visita_podologo?: string;
@@ -152,9 +154,9 @@ export const etapa1 = (req: Request, res: Response) => {
 
 export const etapa1Post = (req: Request, res: Response) => {
     const { 
-        nome, endereco, bairro, cidade,  estado, cep, tel_res, telefone, tel_emergencia, data_nascimento, sexo, profissao, email , contato
+        id_cliente,nome, endereco, bairro, cidade,  estado, cep, tel_res, telefone, tel_emergencia, data_nascimento, sexo, profissao, email , contato
     } = req.body;
- 
+    formData.id_cliente = id_cliente;
     formData.nome = nome;
     formData.endereco = endereco;
     formData.bairro = bairro;
@@ -181,6 +183,7 @@ export const etapa2 = (req: Request, res: Response) => {
 
 export const etapa2Post = (req: Request, res: Response) => {
     const { 
+        id_cliente,
         queixa_principal,
         frequenta_podologo,
         frequencia_visita_podologo,
@@ -207,6 +210,7 @@ export const etapa2Post = (req: Request, res: Response) => {
         tipo_calcado_esporte
     } = req.body;
 
+    formData2.id_cliente = id_cliente
     formData2.queixa_principal = queixa_principal;
     formData2.frequenta_podologo = frequenta_podologo;
     formData2.frequencia_visita_podologo = frequencia_visita_podologo;
@@ -438,7 +442,7 @@ export const etapa7 = (req: Request, res: Response) => {
 export const submit = async (req: Request, res: Response) => {
     try {
         await Etapa1.create(formData);
-        await Etapa2.create(formData2);
+        await Etapa2.create(formData2)
         await Etapa3.create(formData3);
         await Etapa4.create(formData4);
         await Etapa5.create(formData5);

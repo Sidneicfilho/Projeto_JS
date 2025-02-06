@@ -2,7 +2,7 @@ import { Model, DataTypes } from 'sequelize';
 import { sequelize } from '../instances/mysql';
 
 export interface Etapa5Instance extends Model {
-    id:number;
+    id_formato_unhas:number;
     PD_halux: 'Normal' | 'Involuído' | 'Telha' | 'Funil'| 'Gancho' | 'Torquês'| 'Caracol' | 'Cunha';
     PD_2: 'Normal' | 'Involuído' | 'Telha' | 'Funil'| 'Gancho' | 'Torquês'| 'Caracol' | 'Cunha';
     PD_3: 'Normal' | 'Involuído' | 'Telha' | 'Funil'| 'Gancho' | 'Torquês'| 'Caracol' | 'Cunha';
@@ -26,7 +26,7 @@ export interface Etapa5Instance extends Model {
 }
 
 export const Etapa5 = sequelize.define<Etapa5Instance>('Etapa5', {
-    id: {
+    id_formato_unhas: {
         primaryKey: true,
         type: DataTypes.INTEGER,
         autoIncrement: true

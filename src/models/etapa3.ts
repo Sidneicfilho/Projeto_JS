@@ -2,7 +2,7 @@ import { Model, DataTypes } from 'sequelize';
 import { sequelize } from '../instances/mysql';
 
 export interface Etapa3Instance extends Model {
-    id: number;
+    id_dadosclinicos: number;
     id_cliente: number;
     Osteoporose: 'Sim' | 'Não'; // Tipo literal para garantir valores corretos
     Quimioterapia_Radioterapia: 'Sim' | 'Não';
@@ -28,7 +28,7 @@ export interface Etapa3Instance extends Model {
 }
 
 export const Etapa3 = sequelize.define<Etapa3Instance>('Etapa3', {
-    id: {
+    id_dadosclinicos: {
         type: DataTypes.INTEGER,
         primaryKey: true,
         autoIncrement: true

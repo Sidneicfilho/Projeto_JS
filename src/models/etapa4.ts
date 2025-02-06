@@ -2,7 +2,7 @@ import { Model, DataTypes, TinyIntegerDataType } from 'sequelize';
 import { sequelize } from '../instances/mysql';
 
 export interface Etapa4Instance extends Model {
-    id: number;
+    id_alteracoeslesoespes: number;
     id_cliente: number;
     Tipo_Pisada: 'Cavo' | 'Chato' | 'Normal';
     Flexivel_D: boolean;
@@ -22,7 +22,7 @@ export interface Etapa4Instance extends Model {
 }
 
 export const Etapa4 = sequelize.define<Etapa4Instance>('Etapa4', {
-    id: {
+    id_alteracoeslesoespes: {
         type: DataTypes.INTEGER,
         primaryKey: true,
         autoIncrement: true

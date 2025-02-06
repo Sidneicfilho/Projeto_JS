@@ -2,7 +2,7 @@ import { Model, DataTypes } from 'sequelize';
 import { sequelize } from '../instances/mysql';
  
 export interface Etapa6Instance extends Model {
-    id: number;
+    id_alteracoeslesoes: number;
     bromidrose: boolean;
     hidrose: boolean;
     desidrose: boolean;
@@ -27,7 +27,7 @@ export interface Etapa6Instance extends Model {
 }
  
 export const Etapa6 = sequelize.define<Etapa6Instance>('Etapa6', {
-    id: {
+    id_alteracoeslesoes: {
         type: DataTypes.INTEGER,
         primaryKey: true,
         autoIncrement: true
