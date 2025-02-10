@@ -103,6 +103,10 @@ function saveData(){
 function submitForm() {
     // Coleta os dados do sessionStorage
     const id_cliente = sessionStorage.getItem('id_cliente'); 
+    if (!id_cliente) {
+        alert('Erro: id_cliente não encontrado!');
+        return;
+    }
     const queixa_principal = sessionStorage.getItem('queixa_principal');
     const frequenta_podologo = sessionStorage.getItem('frequenta_podologo');
     const frequencia_visita_podologo = sessionStorage.getItem('frequencia_visita_podologo');
@@ -135,7 +139,7 @@ function submitForm() {
             'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-            id_cliente : id_cliente,
+            id_cliente,
             queixa_principal,
             frequenta_podologo,
             frequencia_visita_podologo,

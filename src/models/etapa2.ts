@@ -1,6 +1,7 @@
 import { Model, DataTypes } from 'sequelize';
 import { sequelize } from '../instances/mysql';
 
+
 export interface Etapa2Instance extends Model {
     id_dados_gerais: number;
     id_cliente:number;
@@ -20,7 +21,7 @@ export interface Etapa2Instance extends Model {
     tipo_calcado_diario: 'Chinelo' | 'Tênis' | 'Outro';
     tipo_calcado_qual: 'Ortopédica' | 'Descanso' | 'Outro';
     fumante: 'Sim' | 'Não';
-    ciclo_menstruacao_regular: 'Sim' | 'Não';
+    menstruacao: 'Sim' | 'Não';
     gestante: 'Sim' | 'Não';
     amamentando: 'Sim' | 'Não';
     dum: Date;
@@ -146,3 +147,4 @@ export const Etapa2 = sequelize.define<Etapa2Instance>('Etapa2', {
     timestamps: false // Desabilita os campos `createdAt` e `updatedAt`
 });
 
+export default Etapa2;

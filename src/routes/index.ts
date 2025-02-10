@@ -1,7 +1,18 @@
 import {Router} from 'express'
 import * as usuarioController from '../controllers/usuarioController'
+import { sequelize } from '../instances/mysql';
+import '../models/associacao';// Importe o arquivo de associações
+
+// Sincronize os modelos com o banco de dados
+sequelize.sync().then(() => {
+    console.log('Modelos sincronizados com o banco de dados.');
+});
+
+// Sincronize os modelos com o banco de dados
+
 
 const router = Router()
+
 
 router.get('/etapa1',usuarioController.etapa1)
 router.post('/etapa1',usuarioController.etapa1Post)

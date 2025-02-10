@@ -1,5 +1,6 @@
 import { Model, DataTypes } from 'sequelize';
 import { sequelize } from '../instances/mysql';
+import { Etapa2 } from './etapa2';
 
 export interface Etapa1Instance extends Model {
     id_cliente: number;
@@ -90,3 +91,8 @@ export const Etapa1 = sequelize.define<Etapa1Instance>('Etapa1', {
     tableName: 'cliente',
     timestamps: false
 });
+
+
+export default Etapa1;
+
+

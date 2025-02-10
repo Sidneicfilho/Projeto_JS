@@ -1,50 +1,3 @@
-// script.js
-
-// Salvar dados no sessionStorage
-
-function saveData() {
- 
-    //saveData da pagina ETAPA1
-    if (document.getElementById('nome')) {
-        sessionStorage.setItem('nome', document.getElementById('nome').value);
-    }
-    if (document.getElementById('email')){
-        sessionStorage.setItem('email', document.getElementById('email').value);
-    }
-    if (document.getElementById('endereco')){
-        sessionStorage.setItem('endereco', document.getElementById('endereco').value);
-    }
-    if (document.getElementById('bairro')){
-        sessionStorage.setItem('bairro', document.getElementById('bairro').value);
-    }
-    if (document.getElementById('cidade')){
-        sessionStorage.setItem('cidade', document.getElementById('cidade').value);
-    }
-    if (document.getElementById('estado')){
-        sessionStorage.setItem('estado', document.getElementById('estado').value);
-    }
-    if (document.getElementById('cep')){
-        sessionStorage.setItem('cep', document.getElementById('cep').value);
-    }
-    if (document.getElementById('tel_res')){
-        sessionStorage.setItem('tel_res', document.getElementById('tel_res').value);
-    }
-    if (document.getElementById('telefone')){
-        sessionStorage.setItem('telefone', document.getElementById('telefone').value);
-    }
-    if (document.getElementById('tel_emergencia')){
-        sessionStorage.setItem('tel_emergencia', document.getElementById('tel_emergencia').value);
-    }
-    if (document.getElementById('contato')){
-        sessionStorage.setItem('contato', document.getElementById('contato').value);
-    }
-    if (document.getElementById('data_nascimento')){
-        sessionStorage.setItem('data_nascimento', document.getElementById('data_nascimento').value);
-    }
-    if (document.getElementById('profissao')){
-        sessionStorage.setItem('profissao', document.getElementById('profissao').value);
-    }
-}
 document.getElementById('meuFormulario').addEventListener('submit', function(event) {
     event.preventDefault(); // Evita o envio tradicional do formulário
 
@@ -63,14 +16,19 @@ document.getElementById('meuFormulario').addEventListener('submit', function(eve
     const data_nascimento = document.querySelector('input[name="data_nascimento"]').value;
     const profissao = document.querySelector('input[name="profissao"]').value;
 
+    // Validação dos campos obrigatórios
+    if (!nome || !email || !endereco || !bairro || !cidade || !estado || !cep || !tel_res || !telefone || !tel_emergencia || !contato || !data_nascimento || !profissao) {
+        alert('Por favor, preencha todos os campos obrigatórios.');
+        return;
+    }
+
     // Envia os dados para o backend
-    fetch('/submit', {
+    fetch('/submit-etapa1', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-            id_cliente,
             nome,
             email,
             endereco,
@@ -86,10 +44,17 @@ document.getElementById('meuFormulario').addEventListener('submit', function(eve
             profissao
         })
     })
-    .then(response => response.json())
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Erro ao enviar os dados.');
+        }
+        return response.json();
+    })
     .then(data => {
-        sessionStorage.setItem('id_cliente', data.id_cliente); // Armazena o id_cliente
+        // Armazena o id_cliente no sessionStorage
+        sessionStorage.setItem('id_cliente', data.id_cliente);
         alert('Dados da Etapa1 salvos com sucesso!');
+        console.log('ID do cliente:', data.id_cliente);
     })
     .catch(error => {
         alert('Erro ao enviar os dados!');
