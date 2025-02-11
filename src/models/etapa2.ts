@@ -109,7 +109,7 @@ export const Etapa2 = sequelize.define<Etapa2Instance>('Etapa2', {
         type: DataTypes.ENUM('Sim', 'Não'),
         allowNull: true
     },
-    mestruacao: {
+    menstruacao: {
         type: DataTypes.ENUM('Sim', 'Não'),
         allowNull: true
     },

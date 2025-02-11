@@ -9,8 +9,8 @@ import { Etapa6 } from '../models/etapa6';
 
 
 
+
 let formData: {
-    id_cliente?: number;
     nome?: string;
     endereco?: string; 
     bairro?: string; 
@@ -153,10 +153,11 @@ export const etapa1 = (req: Request, res: Response) => {
     res.render('etapa1');
 };
 
-export const etapa1Post = (req: Request, res: Response) => {
+export const etapa1Post = async (req: Request, res: Response) => {
     const { 
-       nome, endereco, bairro, cidade,  estado, cep, tel_res, telefone, tel_emergencia, data_nascimento, sexo, profissao, email , contato
+      nome, endereco, bairro, cidade, estado, cep, tel_res, telefone, tel_emergencia, data_nascimento, sexo, profissao, email, contato
     } = req.body;
+
     formData.nome = nome;
     formData.endereco = endereco;
     formData.bairro = bairro;
@@ -172,10 +173,10 @@ export const etapa1Post = (req: Request, res: Response) => {
     formData.email = email;
     formData.contato = contato;
 
-  
- 
     res.redirect('/etapa2');
- };
+    
+};
+
 
 
 export const etapa2 = (req: Request, res: Response) => {
@@ -184,7 +185,6 @@ export const etapa2 = (req: Request, res: Response) => {
 
 export const etapa2Post = (req: Request, res: Response) => {
     const { 
-        id_cliente,
         queixa_principal,
         frequenta_podologo,
         frequencia_visita_podologo,
@@ -211,7 +211,8 @@ export const etapa2Post = (req: Request, res: Response) => {
         tipo_calcado_esporte
     } = req.body;
 
-    formData2.id_cliente = id_cliente
+   
+    // Preenche o restante dos dados
     formData2.queixa_principal = queixa_principal;
     formData2.frequenta_podologo = frequenta_podologo;
     formData2.frequencia_visita_podologo = frequencia_visita_podologo;
@@ -237,10 +238,9 @@ export const etapa2Post = (req: Request, res: Response) => {
     formData2.esporte_atividade = esporte_atividade;
     formData2.tipo_calcado_esporte = tipo_calcado_esporte;
     
+    // Redireciona para a próxima etapa
     res.redirect('/etapa3');
 };
-
-
 
 export const etapa3 = (req: Request, res: Response) => {
     res.render('etapa3', { resumo: formData });
@@ -442,6 +442,7 @@ export const etapa7 = (req: Request, res: Response) => {
 
 export const submit = async (req: Request, res: Response) => {
     try {
+        
         await Etapa1.create(formData);
         await Etapa2.create(formData2);
         await Etapa3.create(formData3);

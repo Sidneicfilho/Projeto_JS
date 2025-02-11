@@ -4,6 +4,8 @@ import mustache from 'mustache-express'
 import path from 'path'
 //importando o index.ts
 import mainRoutes from './routes/index'
+import session from 'express-session';
+
 
 dotenv.config()
 const server = express()
@@ -21,4 +23,12 @@ server.listen(process.env.PORT)
 server.use((req,res) =>{
     res.send("Página não encontrada")
 })
+
+
+server.use(session({
+    secret: 'tonto',
+    resave: false,
+    saveUninitialized: true,
+    cookie: { secure: true } // Defina como true se estiver usando HTTPS
+}));
 

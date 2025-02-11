@@ -59,9 +59,9 @@ function saveData(){
             sessionStorage.setItem('tipo_calcado_diario', document.getElementById('tipo_calcado_diario').value);
     }
         
-    if (document.getElementById('tipo_calcado_qual')) {
-            sessionStorage.setItem('tipo_calcado_qual', document.getElementById('tipo_calcado_qual').value);
-    }
+    if (document.querySelector('input[name="tipo_calcado_qual"]:checked')) {
+        sessionStorage.setItem('tipo_calcado_qual', document.querySelector('input[name="tipo_calcado_qual"]:checked').value);
+}
     if (document.querySelector('input[name="fumante"]:checked')) {
         sessionStorage.setItem('fumante', document.querySelector('input[name="fumante"]:checked').value);
     }
@@ -102,10 +102,13 @@ function saveData(){
 // Enviar os dados da ETAPA2 para o backend
 function submitForm() {
     // Coleta os dados do sessionStorage
-    const id_cliente = sessionStorage.getItem('id_cliente'); 
-    if (!id_cliente) {
-        alert('Erro: id_cliente não encontrado!');
-        return;
+    const id_cliente = sessionStorage.getItem('id_cliente');
+
+    if (id_cliente) {
+      // Exibir o id_cliente na página
+      document.getElementById('idCliente').textContent = `ID do Cliente: ${id_cliente}`;
+    } else {
+      document.getElementById('idCliente').textContent = 'ID do Cliente não encontrado.';
     }
     const queixa_principal = sessionStorage.getItem('queixa_principal');
     const frequenta_podologo = sessionStorage.getItem('frequenta_podologo');
